@@ -5,6 +5,7 @@ import { AlignJustify } from 'lucide-react';
 import DrawerItems from '../ui/DrawerItems';
 import { useTheme } from '../ui/ThemeToggler';
 import { useGetAllChats } from '../../hooks/useGetAllChats';
+import { formatTime } from '../../utils/formatTime';
 
 const Sidebar = () => {
     const [width, setWidth] = useState(400); // Initial width of Sidebar
@@ -13,20 +14,12 @@ const Sidebar = () => {
     const [selectedChat, setSelectedChat] = useState(null);
     const { theme } = useTheme();
 
-
-
-
-
     const handleChatClick = (chatId) => {
         setSelectedChat(chatId);
     };
 
 
-    const chats = [
-        { id: 1, name: 'Chat 1', lastMessage: 'Last message from Chat 1', time: '3:31 PM', img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJhbmRvbSUyMHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D" },
-        { id: 2, name: 'Chat 2', lastMessage: 'Last message from Chat 2', time: '1:51 PM', img: "https://img.freepik.com/free-photo/front-view-smiley-woman-with-earbuds_23-2148613052.jpg" },
-        { id: 3, name: 'Chat 3', lastMessage: 'Last message from Chat 3', time: '12:15 PM', img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-_Hsoe9Z97ZNWqMJ3QQRlPvHVOrHPHdbIsA&s" },
-    ];
+
 
     const handleMouseDown = (e) => {
         e.preventDefault();
@@ -124,7 +117,7 @@ const Sidebar = () => {
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <div className={`text-sm transition-all ${selectedChat === chat.id ? ' text-white' : ' text-gray-500'}`}
-                                    onClick={() => handleChatClick(chat.id)} >{chat?.created_at}</div>
+                                    onClick={() => handleChatClick(chat.id)} >{formatTime(chat?.created_at)}</div>
 
                                 <div className='bg-black text-white bg-opacity-25 rounded-full  flex justify-center px-1 py-1  text-xs'>
                                     {chat?.msg_count}
