@@ -1,12 +1,13 @@
 import { Users } from "lucide-react";
 import { CircleUser } from "lucide-react";
 import { Bookmark } from "lucide-react";
-import { Moon } from "lucide-react";
+
 import { Settings } from "lucide-react";
 import { Phone } from "lucide-react";
 import { Megaphone } from "lucide-react";
 import { Plus } from "lucide-react";
 import { ChevronUp } from "lucide-react";
+import ThemeToggler from "./ThemeToggler";
 
 const DrawerItems = () => {
 
@@ -20,7 +21,7 @@ const DrawerItems = () => {
                     <h1 className=" text-base">
                         Owner Name
                     </h1>
-                    <p className="text-sky-600 "> Set Emoji Status</p>
+                    <p className="text-primary font-normal "> Set Emoji Status</p>
                 </div>
                 <div>
                     <ChevronUp className="text-gray-400" />
@@ -35,7 +36,7 @@ const DrawerItems = () => {
                     </h1>
                 </div>
                 <div className="flex items-center gap-4 ml-1">
-                    <Plus className="rounded-full p-[5px] bg-sky-500 text-white" strokeWidth={3.4} />
+                    <Plus className="rounded-full p-[5px] bg-primary text-white" strokeWidth={3.4} />
                     <h1 >
                         Add Account
                     </h1>
@@ -79,16 +80,18 @@ const DrawerItems = () => {
                         Settings
                     </h1>
                 </div>
-                <div className="flex justify-between items-center">
+                {/* <div className="flex justify-between items-center">
                     <div className="flex items-center gap-4">
                         <Moon strokeWidth={1.3} />
                         <h1 >
                             Night Mode
                         </h1>
                     </div>
-                    <input type="checkbox" className="toggle toggle-sm toggle-info" />
-                </div>
+                    <input type="checkbox" className="toggle toggle-sm toggle-primary" />
+                </div> */}
+                <ThemeToggler />
             </div>
+
         </div>
     );
 };
