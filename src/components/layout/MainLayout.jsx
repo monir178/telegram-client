@@ -6,9 +6,10 @@ const MainLayout = () => {
     return (
         <div className="flex h-screen">
             <Sidebar />
-            <div className="flex-1 ml-64 p-8 overflow-y-auto bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+            <div className="flex-1 p-8 overflow-y-auto bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
                 <Outlet />
             </div>
+
         </div>
     );
 };
