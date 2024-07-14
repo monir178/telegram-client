@@ -4,6 +4,7 @@ import telegram from "../../assets/telegram.svg";
 import { AlignJustify } from 'lucide-react';
 import DrawerItems from '../ui/DrawerItems';
 import { useTheme } from '../ui/ThemeToggler';
+import { useGetAllChats } from '../../hooks/useGetAllChats';
 
 const Sidebar = () => {
     const [width, setWidth] = useState(400); // Initial width of Sidebar
@@ -11,6 +12,10 @@ const Sidebar = () => {
     const sidebarRef = useRef(null);
     const [selectedChat, setSelectedChat] = useState(null);
     const { theme } = useTheme();
+
+
+
+
 
     const handleChatClick = (chatId) => {
         setSelectedChat(chatId);
@@ -53,6 +58,13 @@ const Sidebar = () => {
     }, [isResizing]);
 
 
+    //fetch all chats 
+    const { data: chatsData, isLoading, isError } = useGetAllChats();
+    const allChats = chatsData?.data?.data?.data;
+    console.log(allChats);
+    if (isLoading) return <p>Loading...</p>;
+    if (isError) return <p>Error fetching chats: {isError.message}</p>;
+
 
     return (
         <div
@@ -90,7 +102,7 @@ const Sidebar = () => {
                 </div>
             </div>
             <ul>
-                {chats.map((chat) => (
+                {allChats.map((chat) => (
                     <li key={chat.id} className={`px-4 py-2 
                     ${selectedChat === chat.id ? 'bg-primary text-white cursor-pointer' : 'hover:bg-accent cursor-pointer'}
                 `}
@@ -102,20 +114,20 @@ const Sidebar = () => {
                         >
                             <div className='flex items-center gap-3'>
                                 <div>
-                                    <img src={chat.img} className='rounded-full w-12 h-12' alt="" />
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJhbmRvbSUyMHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D" className='rounded-full w-12 h-12' alt="" />
                                 </div>
                                 <div>
-                                    <div className="font-bold text-sm">{chat.name}</div>
+                                    <div className="font-bold text-sm">{chat?.creator?.name}</div>
                                     <div className={`text-xs ${selectedChat === chat.id ? ' text-white' : 'text-gray-500'}`}
                                         onClick={() => handleChatClick(chat.id)} >{chat.lastMessage}</div>
                                 </div>
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <div className={`text-sm transition-all ${selectedChat === chat.id ? ' text-white' : ' text-gray-500'}`}
-                                    onClick={() => handleChatClick(chat.id)} >{chat.time}</div>
+                                    onClick={() => handleChatClick(chat.id)} >{chat?.created_at}</div>
 
                                 <div className='bg-black text-white bg-opacity-25 rounded-full  flex justify-center px-1 py-1  text-xs'>
-                                    432
+                                    {chat?.msg_count}
                                 </div>
 
                             </div>
