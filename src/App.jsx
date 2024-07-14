@@ -1,8 +1,9 @@
-import MainLayout from "./components/layout/MainLayout";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/routes";
 
 const App = () => {
   return (
-    <MainLayout />
+    <RouterProvider router={router} />
   )
 }
 

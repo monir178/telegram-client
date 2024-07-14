@@ -1,14 +1,16 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import background from "../../assets/background.jpeg";
 
 const MainLayout = () => {
     return (
-        <div>
-            <h1>SideNav</h1>
-            <Outlet />
-            <h1>Footer</h1>
-
+        <div className="flex h-screen">
+            <Sidebar />
+            <div className="flex-1 ml-64 p-8 overflow-y-auto bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+                <Outlet />
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default MainLayout
+export default MainLayout;
