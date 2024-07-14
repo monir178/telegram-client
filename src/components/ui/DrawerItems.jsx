@@ -1,19 +1,93 @@
+import { Users } from "lucide-react";
+import { CircleUser } from "lucide-react";
+import { Bookmark } from "lucide-react";
+import { Moon } from "lucide-react";
+import { Settings } from "lucide-react";
+import { Phone } from "lucide-react";
+import { Megaphone } from "lucide-react";
+import { Plus } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 const DrawerItems = () => {
+
     return (
-        <div className="drawer">
-            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                {/* Page content here */}
-                <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Open drawer</label>
+        <div className="font-[646] ">
+            <div>
+                <img src="https://www.meshcc.com/wp-content/uploads/2022/02/Alex-Foord-e1644436249973.jpg" alt="" className="rounded-full h-12 w-12" />
             </div>
-            <div className="drawer-side">
-                <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-                    {/* Sidebar content here */}
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
-                </ul>
+            <div className=" flex justify-between items-center mt-4">
+                <div>
+                    <h1 className=" text-base">
+                        Owner Name
+                    </h1>
+                    <p className="text-sky-600 "> Set Emoji Status</p>
+                </div>
+                <div>
+                    <ChevronUp className="text-gray-400" />
+                </div>
+            </div>
+            <hr className=" border-gray-300 my-3 w-full" />
+            <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                    <img src="https://www.meshcc.com/wp-content/uploads/2022/02/Alex-Foord-e1644436249973.jpg" alt="" className="rounded-full h-9 border-2 border-sky-500 p-[2px] w-9" />
+                    <h1 style={{ fontWeight: 600 }}>
+                        Owner Name
+                    </h1>
+                </div>
+                <div className="flex items-center gap-4 ml-1">
+                    <Plus className="rounded-full p-[5px] bg-sky-500 text-white" strokeWidth={3.4} />
+                    <h1 >
+                        Add Account
+                    </h1>
+                </div>
+            </div>
+            <hr className=" border-gray-300 my-3 w-full" />
+            <div className="ml-1 flex flex-col space-y-5">
+                <div className="flex items-center gap-4">
+                    <Users strokeWidth={1.3} />
+                    <h1 >
+                        New Group
+                    </h1>
+                </div>
+                <div className="flex items-center gap-4">
+                    <Megaphone strokeWidth={1.3} />
+                    <h1 >
+                        New Channel
+                    </h1>
+                </div>
+                <div className="flex items-center gap-4">
+                    <CircleUser strokeWidth={1.3} />
+                    <h1 >
+                        Contacts
+                    </h1>
+                </div>
+                <div className="flex items-center gap-4">
+                    <Phone strokeWidth={1.3} />
+                    <h1 >
+                        Calls
+                    </h1>
+                </div>
+                <div className="flex items-center gap-4">
+                    <Bookmark strokeWidth={1.3} />
+                    <h1 >
+                        Saved Messages
+                    </h1>
+                </div>
+                <div className="flex items-center gap-4">
+                    <Settings strokeWidth={1.3} />
+                    <h1 >
+                        Settings
+                    </h1>
+                </div>
+                <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-4">
+                        <Moon strokeWidth={1.3} />
+                        <h1 >
+                            Night Mode
+                        </h1>
+                    </div>
+                    <input type="checkbox" className="toggle toggle-sm toggle-info" />
+                </div>
             </div>
         </div>
     );
