@@ -1,6 +1,5 @@
 import axios from "axios";
 
-export const getChatMessages = async (chat_id) => {
-    const response = await axios.get(`https://devapi.beyondchats.com/api/get_chat_messages?chat_id=${chat_id}`);
-    return response.data;
+export const getAllChats = async () => {
+    return await axios.get("https://devapi.beyondchats.com/api/get_all_chats?page=1")
 };
