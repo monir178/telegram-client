@@ -65,7 +65,7 @@ const Sidebar = () => {
             className="h-screen border-r  border-gray-200 overflow-y-auto relative"
             style={{ width }}
         >
-            <div className="flex items-center justify-between p-4 border-b border-gray-300">
+            <div className="flex items-center justify-between p-4  ">
                 <label htmlFor="my-drawer" >
                     <div className='relative cursor-pointer'>
                         <AlignJustify className='text-gray-400' />
@@ -73,7 +73,7 @@ const Sidebar = () => {
 
                     </div>
                 </label>
-                <div className="relative w-full ml-4">
+                <div className=" relative w-full ml-4">
 
                     <input
                         type="text"
@@ -93,38 +93,36 @@ const Sidebar = () => {
             </div>
             <ul>
                 {allChats.map((chat) => (
-                    <li key={chat.id} className={`px-4 py-2 
-                    ${selectedChat === chat.id ? 'bg-primary text-white cursor-pointer' : 'hover:bg-accent cursor-pointer'}
-                `}
+                    <Link
+                        key={chat.id}
+                        to={`/chat/${chat.id}`}
                         onClick={() => handleChatClick(chat.id)}
+                        className={`block px-4 py-2 ${selectedChat === chat.id ? 'bg-primary text-white cursor-pointer' : 'hover:bg-accent cursor-pointer'}`}
                     >
-                        <Link
-                            to={`/chat/${chat.id}`}
-                            className="flex justify-between items-center "
-                        >
-                            <div className='flex items-center gap-3'>
-                                <div>
-                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJhbmRvbSUyMHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D" className='rounded-full w-12 h-12' alt="" />
+                        <li>
+                            <div className='flex justify-between items-center'>
+                                <div className='flex items-center gap-3'>
+                                    <div>
+                                        <img src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1720915200&semt=ais_user" className='rounded-full w-14 h-14' alt="" />
+                                    </div>
+                                    <div>
+                                        <div className="font-bold text-sm">{chat?.creator?.name}</div>
+                                        <div className={`text-xs ${selectedChat === chat.id ? 'text-white' : 'text-gray-500'}`}>last message</div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div className="font-bold text-sm">{chat?.creator?.name}</div>
-                                    <div className={`text-xs ${selectedChat === chat.id ? ' text-white' : 'text-gray-500'}`}
-                                        onClick={() => handleChatClick(chat.id)} >last message</div>
+                                <div className='flex flex-col gap-2'>
+                                    <div className={`text-sm transition-all ${selectedChat === chat.id ? 'text-white' : 'text-gray-500'}`}>
+                                        {formatTime(chat?.created_at)}
+                                    </div>
+                                    <div className='bg-black text-white bg-opacity-25 rounded-full flex justify-center px-1 py-1 text-xs'>
+                                        {chat?.msg_count}
+                                    </div>
                                 </div>
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className={`text-sm transition-all ${selectedChat === chat.id ? ' text-white' : ' text-gray-500'}`}
-                                    onClick={() => handleChatClick(chat.id)} >{formatTime(chat?.created_at)}</div>
-
-                                <div className='bg-black text-white bg-opacity-25 rounded-full  flex justify-center px-1 py-1  text-xs'>
-                                    {chat?.msg_count}
-                                </div>
-
-                            </div>
-
-                        </Link>
-                    </li>
+                        </li>
+                    </Link>
                 ))}
+
             </ul>
             <div
                 onMouseDown={handleMouseDown}
