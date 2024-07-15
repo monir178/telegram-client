@@ -53,7 +53,7 @@ const Sidebar = () => {
     //fetch all chats 
     const { data: chatsData, isLoading, isError } = useGetAllChats();
     const allChats = chatsData?.data?.data?.data;
-    console.log(allChats);
+    // console.log(allChats);
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p>Error fetching chats: {isError.message}</p>;
 
@@ -106,7 +106,7 @@ const Sidebar = () => {
                                         <img src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1720915200&semt=ais_user" className='rounded-full w-14 h-14' alt="" />
                                     </div>
                                     <div>
-                                        <div className="font-bold text-sm">{chat?.creator?.name}</div>
+                                        <div className="font-bold text-sm">{chat?.creator?.name ? chat?.creator?.name : "Unknown User"}</div>
                                         <div className={`text-xs ${selectedChat === chat.id ? 'text-white' : 'text-gray-500'}`}>last message</div>
                                     </div>
                                 </div>

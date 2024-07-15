@@ -30,7 +30,7 @@ A Telegram clone built with Vite, React.js, Tailwind CSS, Daisy UI, Lucide Icons
 
 ## Live Demo
 
-Check out the live demo of the Telegram clone [here](https://your-live-site-link.com).
+Check out the live demo of the Telegram clone [here](https://telegram-client-one.vercel.app/).
 
 ## Installation
 

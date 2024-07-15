@@ -18,7 +18,7 @@ const ChatPage = () => {
     if (isError) return <p>Error fetching messages: {isError.message}</p>;
 
     const messages = messagesData?.data;
-    console.log(messages)
+    // console.log(messages)
     const senderName = messages && messages.length > 0 ? messages[0].sender.name : '';
 
     return (
@@ -28,7 +28,7 @@ const ChatPage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
         >
-            {/* Header Section */}
+            {/*Top Bar Section */}
             <div className={`flex items-center justify-between px-4  py-1 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} `}>
 
                 <div>
@@ -50,7 +50,7 @@ const ChatPage = () => {
             </div>
 
             {/* Messages List */}
-            <ul className="space-y-4 flex-1 overflow-y-auto pb-20 px-4 mt-4">
+            <ul className="space-y-4 flex-1 overflow-y-auto pb-20 px-4 pt-4">
                 {messages.map((message, index) => (
                     <motion.li
                         key={message.id}
@@ -75,7 +75,7 @@ const ChatPage = () => {
                 ))}
             </ul>
 
-            {/* Input Section */}
+            {/*Message writing Section */}
             <div className={`flex items-center px-4 py-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} absolute bottom-0 w-full`}>
                 <Paperclip className="text-gray-400 mr-2 cursor-pointer" />
                 <input
