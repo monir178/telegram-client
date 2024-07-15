@@ -20,7 +20,6 @@ const Sidebar = () => {
 
 
 
-
     const handleMouseDown = (e) => {
         e.preventDefault();
         setIsResizing(true);
@@ -59,15 +58,13 @@ const Sidebar = () => {
     if (isError) return <p>Error fetching chats: {isError.message}</p>;
 
 
+
     return (
         <div
             ref={sidebarRef}
             className="h-screen border-r  border-gray-200 overflow-y-auto relative"
             style={{ width }}
         >
-
-
-
             <div className="flex items-center justify-between p-4 border-b border-gray-300">
                 <label htmlFor="my-drawer" >
                     <div className='relative cursor-pointer'>
@@ -112,7 +109,7 @@ const Sidebar = () => {
                                 <div>
                                     <div className="font-bold text-sm">{chat?.creator?.name}</div>
                                     <div className={`text-xs ${selectedChat === chat.id ? ' text-white' : 'text-gray-500'}`}
-                                        onClick={() => handleChatClick(chat.id)} >{chat.lastMessage}</div>
+                                        onClick={() => handleChatClick(chat.id)} >last message</div>
                                 </div>
                             </div>
                             <div className='flex flex-col gap-2'>
@@ -152,10 +149,8 @@ const Sidebar = () => {
                     </ul>
                 </div>
             </div>
-            <div className='absolute bottom-0 p-4'>
-                <h1 className='text-gray-400'>Telegram Clone</h1>
-                <p className='text-gray-400'><small>Md Moniruzzaman Monir</small></p>
-            </div>
+
+
         </div >
     );
 };

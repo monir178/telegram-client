@@ -3,7 +3,11 @@ import { useGetChatMessages } from '../hooks/useGetChatMessages';
 import { formatTime } from '../utils/formatTime';
 import { motion } from 'framer-motion';
 import { useTheme } from '../components/ui/ThemeToggler';
-import { Paperclip, Smile, Mic, Search, PhoneCall, MoreHorizontal, Columns } from 'lucide-react';
+import { Paperclip, Smile, Mic, MoreHorizontal, Columns } from 'lucide-react';
+import { FaPhone } from "react-icons/fa6";
+import { IoIosSearch } from "react-icons/io";
+import { IoMdArrowBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const ChatPage = () => {
     const { chatId } = useParams();
@@ -26,13 +30,20 @@ const ChatPage = () => {
         >
             {/* Header Section */}
             <div className={`flex items-center justify-between px-4  py-1 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} `}>
+
                 <div>
-                    <h2 className=" font-semibold">{senderName || "Unknown user"}</h2>
-                    <p className="text-sm text-gray-400">last seen recently</p>
+                    <div className='flex items-center gap-2'>
+                        <Link to='/' className='md:hidden'>
+                            <IoMdArrowBack className="h-6 w-6 text-gray-400 cursor-pointer" />
+                        </Link>
+                        <h2 className=" font-semibold">{senderName || "Unknown user"}</h2>
+                    </div>
+                    <p className="text-sm text-gray-400 ml-8 md:ml-0">last seen recently</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                    <Search className="text-gray-400 cursor-pointer" />
-                    <PhoneCall className="text-gray-400 cursor-pointer" />
+
+                    <IoIosSearch className="h-6 w-6 text-gray-400 cursor-pointer" />
+                    <FaPhone className=" text-gray-400 cursor-pointer" />
                     <Columns className="text-gray-400 cursor-pointer" />
                     <MoreHorizontal className="text-gray-400 cursor-pointer" />
                 </div>
@@ -65,12 +76,12 @@ const ChatPage = () => {
             </ul>
 
             {/* Input Section */}
-            <div className={`flex items-center px-4 py-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} absolute bottom-0 w-full`}>
+            <div className={`flex items-center px-4 py-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} absolute bottom-0 w-full`}>
                 <Paperclip className="text-gray-400 mr-2 cursor-pointer" />
                 <input
                     type="text"
                     placeholder="Write a message..."
-                    className={`flex-1 p-2  ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-black'} focus:outline-none`}
+                    className={`flex-1 p-2  ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'} focus:outline-none`}
                 />
                 <Smile className="text-gray-400 mx-2 cursor-pointer" />
                 <Mic className="text-gray-400 ml-2 cursor-pointer" />
