@@ -13,7 +13,7 @@ const MainLayout = () => {
         <div className="flex h-screen bg-secondary" >
             <Sidebar />
             <div
-                className="flex-1 p-8 overflow-y-auto bg-cover bg-center"
+                className="flex-1 overflow-y-auto bg-cover bg-center"
                 style={backgroundStyle}
             >
                 <Outlet />

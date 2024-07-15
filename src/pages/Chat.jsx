@@ -3,6 +3,7 @@ import { useGetChatMessages } from '../hooks/useGetChatMessages';
 import { formatTime } from '../utils/formatTime';
 import { motion } from 'framer-motion';
 import { useTheme } from '../components/ui/ThemeToggler';
+import { Paperclip, Smile, Mic } from 'lucide-react';
 
 const ChatPage = () => {
     const { chatId } = useParams();
@@ -16,20 +17,20 @@ const ChatPage = () => {
 
     return (
         <motion.div
-            className="chat-page h-full p-4"
+            className="chat-page flex flex-col h-full relative"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
         >
             <h1 className="text-xl font-bold mb-4">Chat Messages</h1>
-            <ul className="space-y-4">
+            <ul className="space-y-4 flex-1 overflow-y-auto pb-20 px-4 pt-8">
                 {messages.map((message, index) => (
                     <motion.li
                         key={message.id}
                         className={`chat ${message.sender_id === 1 ? 'chat-end' : 'chat-start'}`}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
                         <div
                             className="chat-bubble"
@@ -46,7 +47,19 @@ const ChatPage = () => {
                     </motion.li>
                 ))}
             </ul>
+
+            <div className={`flex items-center p-4 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}  absolute bottom-0 w-full`}>
+                <Paperclip className="text-gray-400 mr-2" />
+                <input
+                    type="text"
+                    placeholder="Write a message..."
+                    className={`flex-1 p-2 rounded-full ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-white text-black'} focus:outline-none`}
+                />
+                <Smile className="text-gray-400 mx-2" />
+                <Mic className="text-gray-400 ml-2" />
+            </div>
         </motion.div>
     );
 };
+
 export default ChatPage;
