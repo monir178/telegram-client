@@ -14,7 +14,8 @@ const ChatPage = () => {
     if (isError) return <p>Error fetching messages: {isError.message}</p>;
 
     const messages = messagesData?.data;
-    const senderName = messages && messages.length > 0 ? messages[0].sender.name : 'Unknown User';
+    console.log(messages)
+    const senderName = messages && messages.length > 0 ? messages[0].sender.name : '';
 
     return (
         <motion.div
@@ -24,9 +25,9 @@ const ChatPage = () => {
             transition={{ duration: 0.3 }}
         >
             {/* Header Section */}
-            <div className={`flex items-center justify-between px-2  py-1 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} `}>
+            <div className={`flex items-center justify-between px-4  py-1 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} `}>
                 <div>
-                    <h2 className=" font-semibold">{senderName}</h2>
+                    <h2 className=" font-semibold">{senderName || "Unknown user"}</h2>
                     <p className="text-sm text-gray-400">last seen recently</p>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -64,12 +65,12 @@ const ChatPage = () => {
             </ul>
 
             {/* Input Section */}
-            <div className={`flex items-center px-3 py-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} absolute bottom-0 w-full`}>
+            <div className={`flex items-center px-4 py-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} absolute bottom-0 w-full`}>
                 <Paperclip className="text-gray-400 mr-2 cursor-pointer" />
                 <input
                     type="text"
                     placeholder="Write a message..."
-                    className={`flex-1 p-2 rounded-full ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-white text-black'} focus:outline-none`}
+                    className={`flex-1 p-2  ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-black'} focus:outline-none`}
                 />
                 <Smile className="text-gray-400 mx-2 cursor-pointer" />
                 <Mic className="text-gray-400 ml-2 cursor-pointer" />
