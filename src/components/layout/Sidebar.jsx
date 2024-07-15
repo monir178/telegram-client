@@ -138,7 +138,8 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="drawer ">
+            {/* The Drawer */}
+            <div className="drawer z-[999]">
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
 
