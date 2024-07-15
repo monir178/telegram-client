@@ -13,8 +13,13 @@ const DrawerItems = () => {
 
     return (
         <div className="font-[646] ">
-            <div>
-                <img src="https://www.meshcc.com/wp-content/uploads/2022/02/Alex-Foord-e1644436249973.jpg" alt="" className="rounded-full h-12 w-12" />
+            <div className="flex justify-between">
+                <div>
+                    <img src="https://www.meshcc.com/wp-content/uploads/2022/02/Alex-Foord-e1644436249973.jpg" alt="" className="rounded-full h-12 w-12" />
+                </div>
+                <div className="md:hidden">
+                    <ThemeToggler />
+                </div>
             </div>
             <div className=" flex justify-between items-center mt-4">
                 <div>
@@ -80,16 +85,12 @@ const DrawerItems = () => {
                         Settings
                     </h1>
                 </div>
-                {/* <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <Moon strokeWidth={1.3} />
-                        <h1 >
-                            Night Mode
-                        </h1>
-                    </div>
-                    <input type="checkbox" className="toggle toggle-sm toggle-primary" />
-                </div> */}
-                <ThemeToggler />
+
+
+                <div className="hidden md:block">
+                    <ThemeToggler />
+                </div>
+
             </div>
 
         </div>
