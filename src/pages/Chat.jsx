@@ -2,12 +2,12 @@ import { useParams } from 'react-router-dom';
 import { useGetChatMessages } from '../hooks/useGetChatMessages';
 import { formatTime } from '../utils/formatTime';
 import { motion } from 'framer-motion';
-import { useTheme } from '../components/ui/ThemeToggler';  // Import the useTheme hook
+import { useTheme } from '../components/ui/ThemeToggler';
 
 const ChatPage = () => {
     const { chatId } = useParams();
     const { data: messagesData, isLoading, isError } = useGetChatMessages(chatId);
-    const { theme } = useTheme();  // Get the current theme
+    const { theme } = useTheme();
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p>Error fetching messages: {isError.message}</p>;
@@ -49,5 +49,4 @@ const ChatPage = () => {
         </motion.div>
     );
 };
-
 export default ChatPage;
